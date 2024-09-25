@@ -55,5 +55,5 @@ import os
 #Blurring
 image_link = os.path.abspath("OIP.jpg")
 img = cv.imread(image_link)
-
+blurred = cv.blur()
 cv.waitKey(0)
