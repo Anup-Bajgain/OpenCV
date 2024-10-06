@@ -1,6 +1,6 @@
 import cv2 as cv
 import os
-
+import numpy as np
 
 #reading image
 # image_link = os.path.abspath("cars.jpg")
@@ -13,16 +13,18 @@ import os
 
 #reading videos
 # video_path = os.path.abspath('video12.mp4')
-# video = cv.VideoCapture(0)
-# while True:
-#     isFrame, frame = video.read()
-#     cv.imshow("frame by frame",frame)
-#     if cv.waitKey(1) & 0xFF == ord("b"):
-#         # i=i+1
-#         # cv.imwrite(f"image_{i}.jpg",frame)
-#         break
-# video.release()
-# cv.destroyAllWindows()
+video = cv.VideoCapture(0)
+while True:
+    isFrame, frame = video.read()
+    edge = cv.Canny(frame,100,200)
+    cv.imshow("frame by frame",frame)
+    cv.imshow("lines",edge)
+    if cv.waitKey(1) & 0xFF == ord("b"):
+        # i=i+1
+        # cv.imwrite(f"image_{i}.jpg",frame)
+        break
+video.release()
+cv.destroyAllWindows()
 
 
 #resizing
@@ -81,9 +83,11 @@ import os
 
 
 #edge detection
-image_link = os.path.abspath("basketball_play.jpg")
-img = cv.imread(image_link)
-edge = cv.Canny(img,10,200)
-cv.imshow("not blurred",img)
-cv.imshow("edge detection",edge)
-cv.waitKey(0)
+# image_link = os.path.abspath("basketball_play.jpg")
+# img = cv.imread(image_link)
+# edge = cv.Canny(img,100,200)
+# dilate = cv.dilate(edge,np.ones((1,1),dtype =np.int8)) #erode can be used to erode the thick lines
+# cv.imshow("not blurred",img)
+# cv.imshow("edge detection",edge)
+# cv.imshow("edge detection bold",dilate)
+# cv.waitKey(0)
