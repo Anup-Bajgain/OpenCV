@@ -1,1 +1,2 @@
-cv.imshow("edge detection bold",dilate)
+
+    if bbox is not None:
