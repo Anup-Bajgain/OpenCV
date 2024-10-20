@@ -1,2 +1,1 @@
-
-    if bbox is not None:
+ret,frame=cap.read()
